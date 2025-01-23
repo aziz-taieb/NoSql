@@ -67,8 +67,6 @@ sudo systemctl start redis-server
 redis-cli
 ```
 
-Je vais détailler chaque type de structure de données Redis avec ses particularités :
-
 ### Structures de Données Redis
 
 #### 1. Chaînes de caractères (Strings)
