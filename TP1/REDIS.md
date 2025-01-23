@@ -13,20 +13,6 @@ NoSQL (Not Only SQL) est une approche de gestion de données qui diffère des ba
 - Traitement de données semi-structurées
 - Flexibilité de stockage
 
-## Redis : Une Solution NoSQL 
-
-### Qu'est-ce que Redis ?
-
-Redis (Remote Dictionary Server) est un système de stockage de données open-source, en mémoire, qui fonctionne comme :
-- Un magasin de structures de données
-- Un cache
-- Un courtier de messages
-- Une base de données
-
-
-
-## Introduction aux Bases de Données NoSQL
-
 Les quatre familles principales de bases de données NoSQL :
 
 1. **Bases de données clé-valeur**
@@ -48,6 +34,17 @@ Les quatre familles principales de bases de données NoSQL :
    - Modélisation des relations complexes
    - Requêtes relationnelles optimisées
    - Exemples : Neo4j, Amazon Neptune
+
+## Redis : Une Solution NoSQL 
+
+### Qu'est-ce que Redis ?
+
+Redis (Remote Dictionary Server) est un système de stockage de données open-source, en mémoire, qui fonctionne comme :
+- Un magasin de structures de données
+- Un cache
+- Un courtier de messages
+- Une base de données
+
 
 ## Redis : Base de Données Clé-Valeur en Mémoire
 
