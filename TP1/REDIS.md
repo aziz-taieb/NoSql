@@ -13,7 +13,7 @@ NoSQL (Not Only SQL) est une approche de gestion de données qui diffère des ba
 - Traitement de données semi-structurées
 - Flexibilité de stockage
 
-## Redis : Une Solution NoSQL Unique
+## Redis : Une Solution NoSQL 
 
 ### Qu'est-ce que Redis ?
 
@@ -23,12 +23,7 @@ Redis (Remote Dictionary Server) est un système de stockage de données open-so
 - Un courtier de messages
 - Une base de données
 
-### Points Clés
-- Stockage principalement en mémoire
-- Persistance optionnelle sur disque
-- Extremely hautes performances
-- Support de nombreuses structures de données
-# Redis : Système de Gestion de Base de Données NoSQL
+
 
 ## Introduction aux Bases de Données NoSQL
 
@@ -61,6 +56,19 @@ Redis (Remote Dictionary Server) se caractérise par :
 - Persistance optionnelle
 - Hautes performances
 - Structures de données avancées
+
+## Installation
+
+```bash
+# Installation Ubuntu/Debian
+sudo apt-get install redis-server
+
+# Démarrage
+sudo systemctl start redis-server
+
+# Connexion
+redis-cli
+```
 
 ### Structures de Données Redis
 
@@ -140,19 +148,3 @@ Quatre fonctionnalités avancées :
 3. **Géo-indexation** : Requêtes spatiales
 4. **Streaming** : Gestion de flux temps réel
 
-## Installation
-
-```bash
-# Installation Ubuntu/Debian
-sudo apt-get install redis-server
-
-# Démarrage
-sudo systemctl start redis-server
-
-# Connexion
-redis-cli
-```
-
-## Conclusion
-
-Redis : flexibilité et performance pour le stockage de données en mémoire.
