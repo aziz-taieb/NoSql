@@ -67,15 +67,21 @@ sudo systemctl start redis-server
 redis-cli
 ```
 
+Je vais détailler chaque type de structure de données Redis avec ses particularités :
+
 ### Structures de Données Redis
 
-#### 1. Chaînes de caractères
+#### 1. Chaînes de caractères (Strings)
 ```bash
 SET cle "valeur"     # Création/modification
 GET cle              # Récupération
 INCR cle             # Incrémentation
 DEL cle              # Suppression
 ```
+**Particularités** :
+- Stockage simple de valeurs textuelles ou numériques
+- Permet des opérations atomiques d'incrémentation
+- Idéal pour les compteurs, flags, et données simples
 
 #### 2. Listes
 ```bash
@@ -83,6 +89,11 @@ RPUSH liste "element"  # Ajout à droite
 LPUSH liste "element"  # Ajout à gauche
 LRANGE liste 0 -1      # Affichage complet
 ```
+**Particularités** :
+- Ordre préservé
+- Opérations d'insertion/suppression aux deux extrémités
+- Peut contenir des éléments dupliqués
+- Utile pour files d'attente, historiques
 
 #### 3. Ensembles
 ```bash
@@ -91,6 +102,11 @@ SMEMBERS ensemble        # Liste membres
 SREM ensemble "membre"   # Suppression
 SUNION ensemble1 ensemble2  # Union
 ```
+**Particularités** :
+- Éléments uniques (pas de doublons)
+- Pas d'ordre spécifique
+- Opérations rapides de comparaison/union
+- Idéal pour liste de tags, relations
 
 #### 4. Ensembles ordonnés
 ```bash
@@ -98,6 +114,10 @@ ZADD classement 10 "utilisateur1"  # Ajout avec score
 ZRANGE classement 0 -1              # Affichage croissant
 ZREVRANGE classement 0 -1           # Affichage décroissant
 ```
+**Particularités** :
+- Éléments uniques avec score numérique
+- Tri automatique par score
+- Parfait pour classements, tableaux de scores
 
 #### 5. Hachages
 ```bash
@@ -105,6 +125,11 @@ HSET utilisateur:1 nom "Jean"   # Création champ
 HGETALL utilisateur:1           # Récupération complète
 HINCRBY utilisateur:1 age 1     # Incrémentation
 ```
+**Particularités** :
+- Stockage de champs multiples pour un objet
+- Schéma dynamique
+- Permet des opérations par champ
+- Similaire à un objet/dictionnaire
 
 ### Fonctionnalités Avancées
 
@@ -114,12 +139,20 @@ SUBSCRIBE canal      # Abonnement
 PUBLISH canal message # Publication
 PSUBSCRIBE motif*    # Abonnement par motif
 ```
+**Particularités** :
+- Communication temps réel
+- Système de messagerie distribué
+- Abonnement par canal ou motif
 
 #### Expiration des Clés
 ```bash
 EXPIRE cle 120       # Expiration dans 120 secondes
 TTL cle              # Temps restant
 ```
+**Particularités** :
+- Suppression automatique des clés
+- Gestion dynamique de la durée de vie
+- Utile pour caches, sessions temporaires
 
 ### Performance
 
