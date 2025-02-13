@@ -98,10 +98,59 @@ CouchDB utilise deux types de vues :
 - **Vues temporaires** : Créées dynamiquement pour des requêtes ponctuelles.
 - **Vues permanentes** : Stockées et réutilisées pour optimiser les performances des requêtes fréquentes.
 
-## Avantages de MapReduce dans CouchDB
-- **Efficacité** : Le traitement parallèle réduit les temps de calcul.
-- **Personnalisation** : Adaptable aux besoins spécifiques des applications.
-- **Interopérabilité** : Les résultats sont exploitables directement via l’API REST.
+## Exercice n°1 : Modélisation et Calcul avec MapReduce
+
+### Modélisation de la matrice M sous forme de documents
+Chaque ligne de la matrice peut être représentée par un document JSON contenant les poids des liens sortants d'une page web donnée.
+
+```json
+{
+  "page": "P1",
+  "liens": [
+    {"vers": "P2", "poids": 0.3},
+    {"vers": "P3", "poids": 0.7}
+  ]
+}
+```
+
+### Calcul de la norme des vecteurs avec MapReduce
+
+#### Fonction Map
+```javascript
+function (doc) {
+  var somme = 0;
+  doc.liens.forEach(function(lien) {
+    somme += Math.pow(lien.poids, 2);
+  });
+  emit(doc.page, Math.sqrt(somme));
+}
+```
+
+#### Fonction Reduce
+```javascript
+function (keys, values, rereduce) {
+  return values;
+}
+```
+
+### Produit Matrice-Vecteur avec MapReduce
+
+#### Fonction Map
+```javascript
+function (doc) {
+  doc.liens.forEach(function(lien) {
+    emit(lien.vers, lien.poids * W[lien.vers]);
+  });
+}
+```
+
+#### Fonction Reduce
+```javascript
+function (keys, values, rereduce) {
+  return values.reduce(function(a, b) { return a + b; }, 0);
+}
+```
 
 ## Conclusion
 Apache CouchDB est une solution robuste et évolutive pour la gestion des bases de données documentaires. Son API REST, son modèle flexible sans schéma et son architecture distribuée en font un choix idéal pour les applications nécessitant un stockage efficace et une synchronisation fiable des données. Grâce à MapReduce, il offre également des capacités puissantes d’indexation et d’agrégation, adaptées aux besoins des applications modernes.
+
